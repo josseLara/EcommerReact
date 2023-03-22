@@ -12,7 +12,7 @@ import { FormEvent } from 'react';
 import { RootState } from '../../store';
 
 function Login() {
-     const clienteID:string = `${process.env.REACT_APP_CLIENT_GOOGLE}`;
+
      let [user, setUser] = useState({});
      const navigate = useNavigate();
      const dispatch = useDispatch();
@@ -39,9 +39,10 @@ function Login() {
           setIncorrect(true)
      }
      useEffect(() => getTokenSave(dispatch, setProfile), [])
-     // console.log(user11)
+    
      if (user11.profileGoogle.change) {
-          navigate("/home");
+          setTimeout(()=> navigate("/home"),2000)
+         ;
      }
      return (
           <div className="login">
