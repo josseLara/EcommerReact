@@ -10,19 +10,22 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData)
      if (!token) {
 
           let url: string = process.env.REACT_APP_URL_LOGIN || "";
+          try{
           axios.post(url, { email, pass })
                .then(response => {
-                    console.log(response.data);
                     localStorage.setItem('token', response.data.token)
 
                })
                .catch(error => {
                     console.error(error);
-
-
                });
+               
+          }catch(err){
+               console.log('URL del login error para obtener el token')
+          }
      } else {
           let urlVerf: string = process.env.REACT_APP_URL_TOKENVERF || "";
+          try{
 
           axios.post(urlVerf, { email, pass, token })
                .then(response => {
@@ -39,9 +42,12 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData)
 
                })
                .catch(error => {
-                    localStorage.removeItem ("token");
-                    console.error(error);
+                    
+                    console.error('error en verfificar el usuario con el token',error);
                });
+          }catch(err){
+               console.log('error en la verfifcacion con el token')
+          }
      }
 
 
