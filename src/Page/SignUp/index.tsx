@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getTokenSave } from '../../services/auth';
 import { setProfile } from '../../features/user/userSlice';
-import { green } from 'colors';
+
 
 function SignUp() {
      const navigate = useNavigate();
