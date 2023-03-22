@@ -3,7 +3,6 @@ import Lottie from "lottie-react";
 import animEcoomer from '../../resouces/login.json';
 import animIncorrect from '../../resouces/incorrect.json';
 import { gapi } from 'gapi-script';
-import GoogleLogin from 'react-google-login';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
@@ -101,14 +100,7 @@ function Login() {
                     {/* google */}
                     <div className="btns">
 
-                         <GoogleLogin
-                              clientId={clienteID}
-                              onSuccess={onSuccess}
-                              onFailure={onFailure}
-                              cookiePolicy={"single_host_policy"}
-                              buttonText=""
-                              className='btnGoogle'
-                         />
+                       
                     </div>
                     {/* registrate */}
                     <Link to="/signUp" className='registrate'>¿No tienes cuenta? Regístrate aquí</Link>
