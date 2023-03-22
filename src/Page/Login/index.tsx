@@ -97,11 +97,7 @@ function Login() {
                          }
                          <button type='submit'>Ingresar</button>
                     </form>
-                    {/* google */}
-                    <div className="btns">
-
-                       
-                    </div>
+                  
                     {/* registrate */}
                     <Link to="/signUp" className='registrate'>¿No tienes cuenta? Regístrate aquí</Link>
                </div>
