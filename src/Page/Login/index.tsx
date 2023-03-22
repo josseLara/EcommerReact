@@ -2,7 +2,6 @@ import './style.css'
 import Lottie from "lottie-react";
 import animEcoomer from '../../resouces/login.json';
 import animIncorrect from '../../resouces/incorrect.json';
-import { gapi } from 'gapi-script';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
@@ -19,15 +18,6 @@ function Login() {
      const dispatch = useDispatch();
      let user11 = useSelector((state: RootState) => state.user);
      let [incorrect, setIncorrect] = useState(false);
-
-     useEffect(() => {
-          const start = () => {
-               gapi.auth2.init({
-                    clientId: clienteID
-               })
-          }
-          gapi.load("client:auth2", start)
-     }, [])
 
 
      const onSuccess = (res: any) => {
