@@ -1,0 +1,122 @@
+import './style.css'
+import Lottie from "lottie-react";
+import animEcoomer from '../../resouces/login.json';
+import animIncorrect from '../../resouces/incorrect.json';
+import { gapi } from 'gapi-script';
+import GoogleLogin from 'react-google-login';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'
+import { setProfile } from '../../features/user/userSlice';
+import { Link } from 'react-router-dom';
+import { getTokenSave } from '../../services/auth';
+import { FormEvent } from 'react';
+import { RootState } from '../../store';
+
+function Login() {
+     const clienteID:string = `${process.env.REACT_APP_CLIENT_GOOGLE}`;
+     let [user, setUser] = useState({});
+     const navigate = useNavigate();
+     const dispatch = useDispatch();
+     let user11 = useSelector((state: RootState) => state.user);
+     let [incorrect, setIncorrect] = useState(false);
+
+     useEffect(() => {
+          const start = () => {
+               gapi.auth2.init({
+                    clientId: clienteID
+               })
+          }
+          gapi.load("client:auth2", start)
+     }, [])
+
+
+     const onSuccess = (res: any) => {
+          setUser(res.profileObj)
+          console.log(res.profileObj)
+          dispatch(setProfile(res.profileObj))
+          navigate('/home');
+     }
+     const onFailure = (res: any) => {
+          console.log(res)
+     }
+
+     // submit login
+     let handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+          const form = e.currentTarget;
+          const formData = new FormData(form);
+          getTokenSave(dispatch, setProfile, formData)
+          setIncorrect(true)
+     }
+     useEffect(() => getTokenSave(dispatch, setProfile), [])
+     // console.log(user11)
+     if (user11.profileGoogle.change) {
+          navigate("/home");
+     }
+     return (
+          <div className="login">
+               <div className="login__content">
+                    {/* logo */}
+                    <div className="logo">
+                         <img src="https://seeklogo.com/images/E/e-commerce-concept-logo-5146F23CC5-seeklogo.com.png" alt="llogo" />
+                         <span>E-commerce {user11.profileGoogle.email}</span>
+                    </div>
+                    {/* waves */}
+                    <div style={{ height: "100%", overflow: "hidden" }} className="wave"><svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: "100%", width: "100%" }}><path d="M208.09,0.00 C152.69,67.20 262.02,76.08 200.80,150.22 L-0.00,150.22 L-0.00,0.00 Z" style={{ stroke: "none", fill: "#08f" }}></path></svg></div>
+                    <div className="wave1"><svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: "100%", width: "100%" }}><path d="M208.09,0.00 C152.69,67.20 262.02,76.08 200.80,150.22 L-0.00,150.22 L-0.00,0.00 Z" ></path></svg></div>
+                    {/* animation */}
+                    <Lottie animationData={animEcoomer} loop={true} className="animation" />
+                    {/* text */}
+                    <p><i className='bx bxs-user-check'></i> Ingresa tus credenciales para acceder a tu cuenta.</p>
+               </div>
+               <div className="content__form">
+                    <h1>Bienvenido a E-commer</h1>
+                    <p>Ingresa tu correo electrónico y contraseña para acceder a tu cuenta. ¡Estamos emocionados de tenerte de vuelta!</p>
+
+                    {/* form */}
+                    <form method="post" onSubmit={handleSubmit}>
+                         <div className="form__input">
+                              <label htmlFor="email">Email</label>
+                              <div className="input">
+                                   <input type="email" name="email" id="email" />
+                                   <i className='bx bxs-user'></i>
+                              </div>
+                         </div>
+                         <div className="form__input">
+                              <label htmlFor="pass">Contraseña</label>
+                              <div className="input">
+                                   <input type="password" name="pass" id="pass" />
+                                   <i className='bx bxs-key'></i>
+                              </div>
+                         </div>
+                         {incorrect &&
+                              <div className="incorrect">
+                                   <Lottie animationData={animIncorrect} className="animIncorrect"/>
+                                   <p className="form__incorrect">La contraseña o el email es incorrecta</p>
+                              </div>
+                         }
+                         <button type='submit'>Ingresar</button>
+                    </form>
+                    {/* google */}
+                    <div className="btns">
+
+                         <GoogleLogin
+                              clientId={clienteID}
+                              onSuccess={onSuccess}
+                              onFailure={onFailure}
+                              cookiePolicy={"single_host_policy"}
+                              buttonText=""
+                              className='btnGoogle'
+                         />
+                    </div>
+                    {/* registrate */}
+                    <Link to="/signUp" className='registrate'>¿No tienes cuenta? Regístrate aquí</Link>
+               </div>
+
+
+          </div>
+     );
+}
+
+export default Login;

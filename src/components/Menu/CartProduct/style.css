@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.cardProduct{
+     margin-left: 2%;
+     margin-top: 5%;
+     display: flex;
+     gap: 10px;
+     justify-content: space-between;
+     border-bottom: 1px solid #ffffff4f;
+     padding-bottom: 10px;
+}
+.cardProduct img{
+     width: 100px;
+     height: 100px;
+     object-fit: cover;
+}
+
+.cardProduct__name{
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     color: #fff;
+}
+.cardProduct__name p{
+     font-size: 1.2rem;
+     font-weight: 600;
+     margin: 0;
+}
+.cardProduct__name span{
+     font-size: 1rem;
+     font-weight: 300;
+     opacity: .5;
+}
+/* amount */
+.cardProduct__amount{
+     display: flex;
+     align-items: center;
+     gap: 6px;
+}
+.cardProduct__amount button{
+     background-color: transparent;
+     border: 1px solid #fff;
+     color: #fff;
+     cursor: pointer;
+}
+.cardProduct__amount button:hover{
+     background-color: #fff;
+     border: 1px solid #000;
+     color: #000;
+}
+.cardProduct__amount span:nth-child(1){
+     font-size:.8rem;
+     color: #fff;
+     opacity: .6;
+     margin: 0px 6px;
+}
+.cardProduct__amount span:nth-child(3){
+     font-size: 1rem;
+     color: #fff;
+}
+
+.cardProduct__precio{
+     display: flex;
+     align-items: center;
+     font-size: 1.1rem;
+     color: #fff;
+     margin-left:5px;
+}
+.cardProduct .btn_closed{
+
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+}
+.cardProduct i{
+     color: #fff;
+     font-size: 1.4rem;
+}
+.cardProduct i:hover{
+     background-color: rgba(255, 0, 0, 0.783);
+}

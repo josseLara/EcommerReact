@@ -1,0 +1,117 @@
+
+.productCard {
+     display: flex;
+     gap: 8px;
+     align-items: center;
+     font-family: 'Poppins', sans-serif;
+
+}
+
+.productCard i {
+     font-size: 1.5rem;
+     color: #000;
+     cursor: pointer;
+}
+
+.productCard img {
+     width: 100px;
+     height: 100px;
+     object-fit: contain;
+     border-radius: 5px;
+     border: 1px solid #0000001e;
+}
+
+.productCard__data {
+     display: flex;
+     flex-direction: column;
+     margin-left: 10px;
+}
+
+.productCard__data h3 {
+     margin: 0;
+     padding: 0;
+     font-size: 1.1rem;
+}
+
+.productCard__data p {
+     font-size: .9rem;
+     font-weight: 600;
+     opacity: .6;
+}
+
+/* precioCu */
+.precioCu {
+     font-size: .9rem;
+     opacity: .6;
+     font-weight: 600;
+     margin-left: 10px;
+}
+
+/* amount */
+.amount {
+     display: flex;
+     gap: 10px;
+     background-color: transparent;
+     margin-left: 10px;
+}
+
+.amount button {
+     font-weight: bold;
+     font-family: 'Poppins', sans-serif;
+     border-radius: 5px;
+     border: 1px solid #00000025;
+     background-color: #fff;
+     cursor: pointer;
+     font-weight: 600;
+
+}
+
+.amount button:hover {
+     border: 1px solid #fff;
+     background-color: #3650d0;
+     color: #fff;
+     font-weight: 600;
+}
+
+.cart__total {
+     display: flex;
+     flex-direction: column;
+     gap: 15px;
+     font-weight: 600;
+     font-size: 1.2rem;
+     margin-left: 20px;
+     align-items: end;
+}
+
+.cart__subtotal {
+     display: flex;
+     justify-content: space-between;
+     gap: 25px;
+}
+
+.cart__subtotal__title {
+     display: flex;
+     flex-direction: column;
+     font-size: .9rem;
+     font-weight: 500;
+     opacity: .6;
+     gap: 10px;
+}
+
+.cart__subtotal__value {
+     display: flex;
+     flex-direction: column;
+     font-size: 1rem;
+     gap: 10px;
+     font-weight: 700;
+}
+
+.total {
+     border-top: 1px solid #00000012;
+     display: flex;
+     justify-content: space-between;
+     align-items: end;
+     gap: 25px;
+     padding-top: 10px;
+     padding-bottom: 20px;
+}

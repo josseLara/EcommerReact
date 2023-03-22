@@ -1,0 +1,235 @@
+.product{
+     width: 200px;
+     height: fit-content;
+     display: flex;
+     flex-direction: column;
+     justify-content: start;
+     gap: 10px;
+     position: relative;
+     padding: 5px 5px;
+     box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+     border-radius: 10px;
+
+}
+.iconRemove{
+     width: 30px;
+     height: 30px;
+     position: absolute;
+     right: -30px;
+     top: -25px;
+     cursor: pointer;
+}
+/*  */
+.product img{
+     width: 200px;
+     height: 150px;
+     object-fit: contain;
+     margin: 20px 0px;
+}
+
+/* product__head */
+     .product__head{
+          display: flex;
+          align-items: start;
+          flex-direction: column;
+          position: relative;
+     }
+     .product__head::after{
+          content: ' ';
+          width: 3px;
+          height: 100%;
+          display: block;
+          background-color: green;
+          position: absolute;
+          left: -10px;
+     }
+
+     .product__head p{
+     color: #000;
+     font-family: 'Poppins', sans-serif;
+     font-size: 1.2rem;
+     font-weight: 700;
+     margin: 0;
+}
+
+.product__head span{
+     color: #2f45a9ee;
+     font-family: 'Poppins', sans-serif;
+     font-size: .9rem;
+     opacity: .8;
+     font-weight: 700;
+     opacity: .7;
+}
+
+
+/* product__footer */
+.product__footer{
+     display: flex;
+     align-items:center ;
+     justify-content: space-between;
+}
+.product__footer__price{
+     display: flex;
+     align-items: start;
+     flex-direction: column;
+}
+.product__footer__price p{
+     color: #0000004b;
+     font-family: 'Poppins', sans-serif;
+     font-size: 1rem;
+     font-weight: 700;
+     margin: 0;
+}
+
+.product__footer__price span{
+     color: #2f45a9ee;
+     font-family: 'Poppins', sans-serif;
+     font-size: 1.2rem;
+     opacity: 1;
+     font-weight: 700;
+}
+.product__footer img{
+     width: 40px;
+     height: 40px;
+     object-fit: contain;
+     padding: 1px;
+     border-radius: 100%;
+     border: 1px solid #00000080;
+}
+.product__footer__more{
+     width: 100%;
+     display: flex;
+     justify-content: end;
+     gap: 6px;
+     align-items: center;
+     margin-top: 8px;
+     cursor: pointer;
+     text-decoration: none;
+
+}
+.product__footer__more span{
+     font-size: .9rem;
+     color: #000;
+}
+.product__footer__more i{
+     font-size: 1.1rem;
+     color: #000000;
+}
+.product__footer__more:hover span,.product__footer__more:hover i{
+     color: #2f45a9ee;
+}
+/* productHover */
+.productHover{
+     width: 100%;
+     height: 100%;
+     background-color: #2f45a9ee;
+     position: absolute;
+     display: flex;
+     flex-direction: column;
+     font-family: 'Poppins', sans-serif;
+     z-index: -1;
+     opacity: 0;
+     left: -5px;
+     /* animation:productHoverAnim 1s alternate infinite forwards ease-in-out */
+}
+@keyframes productHoverAnim{
+     0%{
+          height: 0%;
+          z-index: -1;
+          opacity: 0;
+     }
+     100%{
+          height: 100%;
+          max-height: 250px;
+          z-index: 5;
+          opacity: 1;
+     }
+}
+.productHover span:nth-child(1){
+    align-self: flex-end;
+    padding: 4px;
+    font-size: .7rem;
+    color: #fff;
+    background-color: #000;
+}
+.productHover span:nth-child(2){
+     color: #fff;
+     font-size: 1.2rem;
+     font-weight: 600;
+     margin-left: 4%;
+     margin-top: 2%;
+     text-align: center;
+}
+
+.productHover__btn{
+     display: flex;
+     gap: 9px;
+     align-self: center;
+     justify-self: center;
+     margin-top: 10%;
+}
+.productHover__btn button{
+     border-radius: 100%;
+     border: none;
+     background-color: #5f75d5e4;
+     padding: 5px;
+     color: #fff;
+}
+.productHover__btn .animationLottie{
+     width: 40px;
+     height: 40px;
+}
+.productHover__btn button i{
+     font-size: 2rem;
+     padding: 2px;
+     font-weight: 200;
+}
+.productHover__btn button span{
+     display: none;
+   
+}
+.productHover__btn button:hover{
+     background-color: #000000;
+     cursor: pointer;
+     border-radius: 20px;
+     display: flex;
+     align-items: center;
+    
+}
+.productHover__btn button:hover span{
+     display: inline-block;
+     display: inline-block;
+     height: fit-content;
+     color: #fff;
+     font-size: .9rem;
+     font-weight: 700;
+     margin: 0;
+     padding: 0; 
+     animation:spanProd .4s alternate  forwards ease-in-out ;
+ transition: all;
+}
+
+@keyframes spanProd {
+     0%{
+          display: inline-block;
+          width: 0px;
+     }
+     50%{
+          display: inline-block;
+          width: 40px;
+          
+     }
+     60%{
+          display: inline-block;
+          width: 70px;
+     }
+     70%{
+          display: inline-block;
+          width: 90px;
+     }
+     100%{
+          width: fit-content;
+          display: inline-block !important;
+        
+     }
+}

@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.productDescription {
+     display: flex;
+     gap: 10px;
+     font-family: 'Poppins', sans-serif;
+     margin-top: 50px;
+     padding-bottom: 60px;
+     justify-content: center;
+     padding-left: 10px;
+}
+
+.imagen {
+     width: 300px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+}
+ 
+.imagen img:nth-child(1) {
+     width: 300px;
+     height: 270px;
+     object-fit: contain;
+}
+
+.imagen__list {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     justify-content: center;
+     cursor: pointer;
+}
+
+.imagen__list img {
+     width: 60px !important;
+     height: 60px !important;
+     border: 1px solid #00000061;
+     object-fit: contain !important;
+}
+
+.imagen__list img:hover {
+     border-color: #2371cb;
+}
+
+/* description */
+.description {
+    
+     display: flex;
+     flex-direction: column;
+}
+
+.description span {
+     font-size: .9rem;
+     opacity: .6;
+     font-weight: 500;
+}
+
+.description h1 {
+     margin: 0;
+     font-size: 1.9rem;
+}
+
+.description__precio {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+}
+
+.description__precio .precio {
+     font-size: 1.2rem;
+     font-weight: 600;
+     opacity: 1;
+}
+
+.description__precio .alerta {
+     font-size: .9rem;
+     background-color: rgb(137, 57, 57);
+     padding: 3px 5px;
+     opacity: 1;
+     border-radius: 15px;
+     color: #fff;
+}
+
+.description p {
+     margin-top: 5%;
+     text-align: justify;
+     width: 90%;
+}
+
+.color {
+     display: flex;
+     gap: 10px;
+     align-items: center;
+}
+
+.color h3,
+.talla h3 {
+     font-size: 1.1rem;
+     margin-right: 10px;
+}
+
+.color span {
+     width: 20px;
+     height: 5px;
+     border-radius: 10px;
+     opacity: 1;
+}
+
+.color .rojo ,.color .red{
+     background: red;
+
+}
+
+.color .azul,.color .blue {
+     background-color: blue;
+}
+
+.color .negro,.color .black {
+     background-color: black;
+}
+.color .blanco {
+     background-color: rgb(255, 255, 255);
+     border: 1px solid #00000088;
+}
+
+/* talla */
+.talla {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+}
+
+.talla button {
+     background-color: transparent;
+     color: #000;
+     font-size: .8rem;
+     border: 1px solid #0000008d;
+     font-weight: 600;
+     font-family: 'Poppins', sans-serif;
+     padding: 2px 4px;
+     border-radius: 100%;
+     cursor: pointer;
+}
+
+.talla button:hover {
+     color: #fff;
+     background-color: #3650d0;
+     border-color: #3650d0;
+}
+
+/* btns */
+.btns {
+     display: flex;
+     gap: 10px;
+     align-items: center;
+
+}
+
+.btns button {
+     background-image: linear-gradient(to right top, #3650d0, #2162d0, #2371cb, #387ec4, #5389bb);
+     border: none;
+     padding: 10px 15px;
+     border-radius: 20px;
+     color: #fff;
+     font-size: 1rem;
+     font-family: 'Poppins', sans-serif;
+     display: flex;
+     gap: 5px;
+     align-items: center;
+     cursor: pointer;
+}
+
+.btns button i {
+     font-size: 1.3rem;
+}
+
+.btns .amount{
+     display: flex;
+     align-items: center;
+     border: 1px solid #00000076;
+     border-radius: 15px;
+     padding: 5px 10px;
+     gap: 8px;
+}
+.btns .amount button{
+     background: transparent ;
+     color: gray;
+     padding: 0px 5px;
+     font-weight: 700;
+     opacity: 1;
+     border: none;
+    
+
+}
+.btns .amount:hover{
+     color: #2162d0;
+}
+.btns .amount span{
+     color: #000 !important;
+     opacity: 1;
+}
+hr{
+     margin-top: 4%;
+     width: 100%;
+     height: 1px;
+     background-color: #0000003a;
+}
+.heart{
+     display: flex;
+     align-items: center;
+     color: #00000079;
+     width: fit-content;
+     padding: 4px 6px;
+     font-size: 1rem;
+     font-family: 'Poppins', sans-serif;
+     margin-top: 2%;
+     border: none;
+     align-items: center;
+     gap: 6px;
+     font-weight: 600;
+     cursor: pointer;
+}
+.heart i{
+     font-size: 1.3rem;
+}
+.heart:hover{
+     color: rgb(173, 22, 22);
+}
+
+@media screen and (max-width:600px) {
+     .productDescription{
+          flex-direction: column;
+          align-items: center;
+     }
+     .description{
+          padding-left: 10px;
+     }
+}

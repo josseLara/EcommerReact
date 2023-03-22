@@ -1,0 +1,146 @@
+.singUp{
+padding: 15px;
+display: flex;
+justify-content: center;
+}
+.singUp .btnLogin{
+     z-index: 20;
+     padding: 5px;
+     color: #000;
+     font-size: 1.4rem;
+     position: absolute;
+     left: 1%;
+     top: 2%;
+     cursor: pointer;
+     border-radius: 100%;
+     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.singUp .btnLogin:hover{
+     color: #3650d0;
+}
+.titleForm{
+     display: flex;
+     align-items: center;
+     gap: 10px;
+}
+.animationSignUp{
+     width: 100px;
+     height: 100px;
+}
+/* form */
+.singUp form {
+     width: 450px;
+     display: flex;
+     flex-direction: column;
+     gap: 30px;
+     align-items: center;
+     padding: 10px 0px;
+     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+     z-index: 10;
+     background-color: #fff;
+}
+
+.form__input {
+     width: 70%;
+     display: flex;
+     flex-direction: column;
+     font-weight: 600;
+     color: #3650d0;
+     gap: 6px;
+     position: relative;
+
+}
+
+.input {
+     width: 100%;
+     border-bottom: 1px solid #3650d0;
+     display: flex;
+     align-items: center;
+     gap: 3px;
+}
+
+.form__input input {
+     width: 100%;
+     color: #000;
+     font-size: 1rem;
+     outline: none;
+     border: none;
+     font-family: 'Poppins', sans-serif;
+
+}
+
+form button {
+     width: 200px;
+     padding: 10px 15px;
+     background-image: -webkit-linear-gradient(45deg, #55d7d9 0%, #3650d0 72%, #3650d0 33%);
+     color: #fff;
+     border: 1px solid transparent;
+     font-family: 'Poppins', sans-serif;
+     font-size: .9rem;
+     border-radius: 10px;
+     margin-top: 20px;
+     cursor: pointer;
+     font-weight: 600;
+}
+
+form button:hover {
+     background: -webkit-linear-gradient(45deg, #dbe1e1 0%, #fff 72%, #fff 33%);
+     background-image: -webkit-linear-gradient(45deg, #55d7d9 0%, #3650d0 72%, #3650d0 33%);
+     background-clip: text;
+     -webkit-background-clip: text;
+     text-fill-color: transparent;
+     -webkit-text-fill-color: transparent;
+     border-color: #3650d0;
+}
+
+.form__input__foto{
+     display: flex;
+     gap: 10px;
+     align-items: center;
+}
+.form__input__foto img{
+     width: 70px;
+     height: 70px;
+     object-fit: cover;
+}
+.form__input__file{
+     width: fit-content;
+     height: fit-content;
+     position: relative;
+     cursor: pointer !important;
+     border-radius: 10px;
+
+}
+.form__input__file label{ 
+     display: flex;
+     gap: 5px;
+     align-items: center;
+     font-size: 1.1rem;
+     cursor: pointer;
+     border: 1px solid #3650d0d7;
+     padding: 8px 10px;
+     cursor: pointer !important;
+     font-weight: 500;
+     border-radius: 10px;
+}
+.form__input__file label i{
+     font-size: 1.5rem;
+}
+.form__input__file input{
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     top: 0;
+     opacity: 0;
+     cursor: pointer !important;
+}
+.form__input__file:is(:hover) {
+     background-color: #3650d0 !important;
+     color: #fff;
+}
+/* wave */
+.waveSing{
+     position: absolute;
+     bottom: -50px;
+     z-index: -1;
+}
