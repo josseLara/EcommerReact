@@ -45,7 +45,7 @@ function CardProduct(data:ProductInterfece) {
                     <span>{data.amount}</span>
                     <button onClick={handletIncrement}>+</button>
                </div>
-               <span className="cardProduct__precio">${parseInt(data.price) * amountTotal}</span>
+               <span className="cardProduct__precio">${parseInt(data.price) * parseInt(data.amount)}</span>
                <div className="btn_closed">
                     <i className='bx bx-x' onClick={handletRemover}></i>
                </div>

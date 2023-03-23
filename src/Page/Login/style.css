@@ -9,7 +9,20 @@
      margin-top: 10%;
      margin-left: 0%;
 }
-
+.login__loadingBg{
+     position: fixed;
+     width: 100%;
+     background-color: #000;
+     height: 200vh;
+     z-index: 50;
+}
+.login__loading{
+     position: relative;
+     top: 35%;
+     left: 25%;
+     width: 200px;
+     height: 200px;
+}
 .login__content {
      width: fit-content;
      height: 100%;

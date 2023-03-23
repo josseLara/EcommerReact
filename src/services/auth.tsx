@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData) {
+export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,handletNavigator ?:Function) {
 
      let email =formData ? formData.get('email'): "";
      let pass = formData ? formData.get('pass'): "";
@@ -13,8 +13,9 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData)
           try{
           axios.post(url, { email, pass })
                .then(response => {
+                    if(handletNavigator) handletNavigator();
                     localStorage.setItem('token', response.data.token)
-
+                    
                })
                .catch(error => {
                     console.error(error);
@@ -37,8 +38,6 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData)
                          change: true
                     }))
                     return response.data;
-                    //     cambiar de ruta a home
-                    // window.location.href = `${process.env.REACT_APP_URL}`
 
                })
                .catch(error => {

@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { getTokenSave } from '../../services/auth';
 import { FormEvent } from 'react';
 import { RootState } from '../../store';
+import loadingAnim from '../../resouces/loading.json';
 
 function Login() {
 
@@ -18,34 +19,35 @@ function Login() {
      const dispatch = useDispatch();
      let user11 = useSelector((state: RootState) => state.user);
      let [incorrect, setIncorrect] = useState(false);
+     let [loading, setLoading] = useState(false);
 
-
-     const onSuccess = (res: any) => {
-          setUser(res.profileObj)
-          console.log(res.profileObj)
-          dispatch(setProfile(res.profileObj))
-          navigate('/home');
-     }
-     const onFailure = (res: any) => {
-          console.log(res)
-     }
+     let handletNavigator = () => {
+          window.location.href = "http://localhost:3000/home"    
+     };
 
      // submit login
      let handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           const form = e.currentTarget;
           const formData = new FormData(form);
-          getTokenSave(dispatch, setProfile, formData)
-          setIncorrect(true)
+          try {
+               getTokenSave(dispatch, setProfile, formData, handletNavigator)
+          } catch (err) {
+               setIncorrect(true)
+          }
      }
      useEffect(() => getTokenSave(dispatch, setProfile), [])
-    
-     if (user11.profileGoogle.change) {
-          setTimeout(()=> navigate("/home"),2000)
-         ;
-     }
+
+  
+     // useEffect(() => navigate("/home"), [user11])
+
      return (
           <div className="login">
+               {loading &&
+                    <div className="login__loadingBg">
+                         <Lottie animationData={loadingAnim} className="login__loading" />
+                    </div>
+               }
                <div className="login__content">
                     {/* logo */}
                     <div className="logo">
@@ -82,13 +84,13 @@ function Login() {
                          </div>
                          {incorrect &&
                               <div className="incorrect">
-                                   <Lottie animationData={animIncorrect} className="animIncorrect"/>
+                                   <Lottie animationData={animIncorrect} className="animIncorrect" />
                                    <p className="form__incorrect">La contraseña o el email es incorrecta</p>
                               </div>
                          }
                          <button type='submit'>Ingresar</button>
                     </form>
-                  
+
                     {/* registrate */}
                     <Link to="/signUp" className='registrate'>¿No tienes cuenta? Regístrate aquí</Link>
                </div>
