@@ -22,7 +22,7 @@ function Login() {
      let [loading, setLoading] = useState(false);
 
      let handletNavigator = () => {
-          window.location.href = "http://localhost:3000/home"    
+          window.location.href = "https://ecommer-react.vercel.app/home"    
      };
 
      // submit login
