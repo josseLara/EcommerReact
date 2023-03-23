@@ -110,7 +110,7 @@ function Home() {
      // tab
      let [tabMin, setTabMin] = useState<number>(0);
      let [tabMax, setTabMax] = useState<number>(6);
-
+ 
      // 
      return (
           <>

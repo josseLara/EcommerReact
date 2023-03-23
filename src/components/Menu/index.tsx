@@ -102,7 +102,7 @@ function Menu() {
                          <div>
                               <Link to="/favorites" onClick={() => setToggleMenu(!toggleMenu)}>
                                    Favoritos
-                              </Link>
+                              </Link> 
                          </div>
                          <div>
                               <Link to="/profile" onClick={() => setToggleMenu(!toggleMenu)}>

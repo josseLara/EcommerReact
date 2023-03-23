@@ -6,7 +6,7 @@ import { ProductInterfece } from '../../features/productSlice';
 import { useState,useEffect } from 'react';
 import Lottie from 'lottie-react';
 import AstronautAnim from '../../resouces/astronaut.json';
-
+ 
 function Favorites() {
      let favorites = useSelector( (state:RootState) => state.favorites);
      let [search,setSearch] = useState<string>("");

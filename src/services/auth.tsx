@@ -42,8 +42,10 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData)
 
                })
                .catch(error => {
-                    
-                    console.error('error en verfificar el usuario con el token',error);
+                    if(error.response.data == 'El token ha expirado'){
+                         localStorage.removeItem("token");
+                    }
+                    console.error('error en verificar el usuario con el token',error);
                });
           }catch(err){
                console.log('error en la verfifcacion con el token')

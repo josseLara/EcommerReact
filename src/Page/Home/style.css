@@ -688,4 +688,10 @@
      .contentShop form{
           align-items: stretch
      }
+     .contentShop__filter{
+          height: fit-content;
+     }
+     form .btn-filter{
+          margin-left: 20%;
+     }
 }

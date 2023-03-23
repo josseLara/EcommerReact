@@ -187,3 +187,12 @@
 
      }
 }
+
+@media screen and (max-width:830px) {
+     .profile h1{
+          margin-left: 30px;
+     }
+     .imagen i{
+          top: 7%;
+     }
+}

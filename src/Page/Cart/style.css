@@ -175,14 +175,28 @@ select option {
 @media screen and (max-width:830px) {
      .cart__content{
           grid-template-columns: 1fr;
+          justify-items:start;
+     }
+     .productCard{
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+     }
+     .productCard .bx-x{
+          grid-column: 1/4;
+          justify-self: end;
      }
      .cart__list{
-          width: 88%;
+          width: 100%;
+          gap: 30px;
+     }
+     ::-webkit-scrollbar {
+          width: 10px;
      }
      .cart__total {
-          width: 80%;
+          width: 90%;
      }
      .cart__card {
-          width: 90%;
+          width: 93%;
      }
 }
