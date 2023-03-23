@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { getTokenSave } from '../../services/auth';
 import { FormEvent } from 'react';
 import { RootState } from '../../store';
-import loadingAnim from '../../resouces/loading.json';
+
 
 function Login() {
 
@@ -19,10 +19,11 @@ function Login() {
      const dispatch = useDispatch();
      let user11 = useSelector((state: RootState) => state.user);
      let [incorrect, setIncorrect] = useState(false);
-     let [loading, setLoading] = useState(false);
+
 
      let handletNavigator = () => {
           window.location.href = "https://ecommer-react.vercel.app/home"    
+       
      };
 
      // submit login
@@ -39,15 +40,11 @@ function Login() {
      useEffect(() => getTokenSave(dispatch, setProfile), [])
 
   
-     // useEffect(() => navigate("/home"), [user11])
+     useEffect(() => navigate("/home"), [user11])
 
      return (
           <div className="login">
-               {loading &&
-                    <div className="login__loadingBg">
-                         <Lottie animationData={loadingAnim} className="login__loading" />
-                    </div>
-               }
+
                <div className="login__content">
                     {/* logo */}
                     <div className="logo">

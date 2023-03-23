@@ -9,11 +9,12 @@ import IconRemoveAnim from '../../resouces/remove.json';
 import { ProductInterfece } from "../../features/productSlice"
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCartState,setCartRemove } from '../../features/cart/cart.Slice';
+import { setCartState, setCartRemove } from '../../features/cart/cart.Slice';
 import { setFavoriteRemove, setFavoritesState } from '../../features/favorite/favoriteSlice';
 import { setDescriptionState } from '../../features/description/descriptionSlice';
 import { RootState } from '../../store';
 import CardProduct from '../Menu/CartProduct';
+import { setFavorites } from '../../services/api';
 interface Animation {
      animation: string
 }
@@ -23,17 +24,20 @@ function Product(data: ProductInterfece & { hiddenF: boolean }) {
      let [productAnim, setProductAnim] = useState<boolean>(false);
      const [iconHeartColor, setIconHeartColor] = useState<boolean>(false);
      const [iconCartColor, setIconCartColor] = useState<boolean>(false);
-     const cartProd = useSelector((state:RootState)=> state.cart);
-     const cartHeart = useSelector((state:RootState)=> state.favorites);
-     
-      useEffect(()=> {
-          let iconCartHave = cartProd.findIndex((e)=> e._id == data._id);
+     const cartProd = useSelector((state: RootState) => state.cart);
+     const cartHeart = useSelector((state: RootState) => state.favorites);
+     const user = useSelector((state: RootState) => state.user);
+
+     useEffect(() => {
+          let iconCartHave = cartProd.findIndex((e) => e._id == data._id);
           setIconCartColor(iconCartHave != -1 ? true : false)
-     },[cartProd])
-     useEffect(()=> {
-          let iconHeartHave = cartHeart.findIndex((e)=> e._id == data._id);
+     }, [cartProd])
+     useEffect(() => {
+          let iconHeartHave = cartHeart.findIndex((e) => e._id == data._id);
           setIconHeartColor(iconHeartHave != -1 ? true : false)
-     },[cartHeart])
+          // console.log(data._id);
+
+     }, [cartHeart])
 
      // animation Product 
      let animationProduct: Animation = productAnim ?
@@ -59,25 +63,27 @@ function Product(data: ProductInterfece & { hiddenF: boolean }) {
      useEffect(() => pauseAnimation(removeAnimRef), [])
      // add cart
      let dispatch = useDispatch();
-     const handletAddCart = () => {  
-          if(iconCartColor){
+     const handletAddCart = () => {
+          if (iconCartColor) {
                dispatch(setCartRemove([data]))
-          }else{
+          } else {
                dispatch(setCartState([data]))
           }
           setIconCartColor(!iconCartColor);
      }
      // add favorites
      let handletAddFavorites = () => {
-          if(iconHeartColor){
+          if (iconHeartColor) {
                hendletRemoveFavorite()
-          }else{
+          } else {
                dispatch(setFavoritesState([data]))
+               setFavorites('add', data._id, user.profileGoogle.email)
           }
           setIconHeartColor(!iconHeartColor)
      }
      let hendletRemoveFavorite = () => {
           dispatch(setFavoriteRemove([data]))
+          setFavorites('remove', data._id, user.profileGoogle.email)
      }
      // add description
      let handletAddDescription = () => {

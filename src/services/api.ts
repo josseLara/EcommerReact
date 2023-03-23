@@ -18,3 +18,15 @@ export const getDataAPI =  (dispatch: any, setProductState: any): ProductInterfe
      
       return dataProd
 }
+
+export const setFavorites = (type:string,productId:string,email:string)=>{
+      let obj = {
+            "product":productId,
+            "email":email
+          }      
+      if(type == 'add'){
+            axios.post(`${process.env.REACT_APP_URL_ABSOLUTE}/favorites/add`,obj)
+      }else{
+            axios.delete(`${process.env.REACT_APP_URL_ABSOLUTE}/favorites?product=${productId}&email=${email}`)
+      }    
+}

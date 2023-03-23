@@ -11,6 +11,8 @@ import noResultAnim from '../../resouces/noResult.json';
 import Lottie from 'lottie-react';
 import { convertToObject } from 'typescript';
 import { render } from '@testing-library/react';
+import axios from 'axios';
+import { setFavoritesState } from '../../features/favorite/favoriteSlice';
 
 
 // types
@@ -25,6 +27,7 @@ const animationArrow = (bool: boolean) => {
      return animation
 }
 
+// 
 const animationOption = (bool: boolean) => {
      let animation: Animation =
           bool ?
@@ -46,6 +49,8 @@ let generateKey = (bool: boolean) => {
 
 
 function Home() {
+     let user = useSelector((state: RootState) => state.user);
+     let favorite = useSelector((state: RootState) => state.favorites);
      let [categoria, setCategoria] = useState<boolean>(false);
      let [talle, setTalle] = useState<boolean>(false);
      let [genero, setGenero] = useState<boolean>(false);
@@ -100,9 +105,9 @@ function Home() {
           const form = event.currentTarget;
           const formData = new FormData(form);
           // console.log(formData.getAll('color'))
-          let dataProd =filtrarForm(productLista, formData);
+          let dataProd = filtrarForm(productLista, formData);
           // 
-       
+
           setProductListaCopy(dataProd);
      }
      // color
@@ -110,8 +115,24 @@ function Home() {
      // tab
      let [tabMin, setTabMin] = useState<number>(0);
      let [tabMax, setTabMax] = useState<number>(6);
- 
-     // 
+
+
+     useEffect(() => {
+          // axios obtener los datos favoritos
+          axios.post(`${process.env.REACT_APP_URL_ABSOLUTE}/favorites`, { "email": user.profileGoogle.email })
+               .then(data => {
+
+                    let favoritesGuardados = productLista.filter((e) => {
+                         let pro = data.data.findIndex((prod: any) => {
+                              return prod.product == e._id
+                         })
+                         return pro != -1
+                    });
+                    if (favoritesGuardados.length != 0 && favorite.length == 0) {
+                         dispatch(setFavoritesState(favoritesGuardados))
+                    }
+               });
+     }, [productListaCopy])
      return (
           <>
                <div className="backgroundColor">
@@ -220,28 +241,28 @@ function Home() {
                                              <div className="color" onMouseOver={() => setColor([true, false, false, false])} onMouseOut={() => setColor([false, false, false, false])} onClick={() => setColorSeleccionado("rojo")}>
                                                   <i className='bx bxs-down-arrow' style={animationStyle(color[0], 'arrowColor', '1')} key={generateKey(color[0])}></i>
                                                   <span className="red"></span>
-                                                  <input type="radio" name="color" value="rojo" checked={colorSeleccionado === 'rojo'} onChange={()=>{}}/>
+                                                  <input type="radio" name="color" value="rojo" checked={colorSeleccionado === 'rojo'} onChange={() => { }} />
                                              </div>
                                              <div className="color" onMouseOver={() => setColor([false, true, false, false])} onMouseOut={() => setColor([false, false, false, false])} onClick={() => setColorSeleccionado("azul")}>
                                                   <i className='bx bxs-down-arrow' style={animationStyle(color[1], 'arrowColor', '1')} key={generateKey(color[1])}></i>
                                                   <span className="blue" ></span>
-                                                  <input type="radio" name="color" value="azul" checked={colorSeleccionado === 'azul'} onChange={()=>{}}/>
+                                                  <input type="radio" name="color" value="azul" checked={colorSeleccionado === 'azul'} onChange={() => { }} />
 
                                              </div>
                                              <div className="color" onMouseOver={() => setColor([false, false, true, false])} onMouseOut={() => setColor([false, false, false, false])} onClick={() => setColorSeleccionado("negro")}>
                                                   <i className='bx bxs-down-arrow' style={animationStyle(color[2], 'arrowColor', '1')} key={generateKey(color[2])}></i>
                                                   <span className="black"></span>
-                                                  <input type="radio" name="color" value="negro" checked={colorSeleccionado === 'negro'} onChange={()=>{}}/>
+                                                  <input type="radio" name="color" value="negro" checked={colorSeleccionado === 'negro'} onChange={() => { }} />
 
                                              </div>
                                              <div className="color" onMouseOver={() => setColor([false, false, false, true])} onMouseOut={() => setColor([false, false, false, false])} onClick={() => setColorSeleccionado("blanco")}>
                                                   <i className='bx bxs-down-arrow' style={animationStyle(color[3], 'arrowColor', '1')} key={generateKey(color[3])}></i>
                                                   <span className="blanco"></span>
-                                                  <input type="radio" name="color" value="blanco" checked={colorSeleccionado === 'blanco'} onChange={()=>{}}/>
+                                                  <input type="radio" name="color" value="blanco" checked={colorSeleccionado === 'blanco'} onChange={() => { }} />
                                              </div>
                                              <div className="color" onClick={() => setColorSeleccionado("todos")}>
                                                   <span className="todosColor"><i className={colorSeleccionado == "todos" ? 'bx bxs-color' : 'bx bx-color'}></i></span>
-                                                  <input type="radio" name="color" value="todos" checked={colorSeleccionado === 'todos'} onChange={()=>{}}/>
+                                                  <input type="radio" name="color" value="todos" checked={colorSeleccionado === 'todos'} onChange={() => { }} />
                                              </div>
                                         </div>
                                    </div>
@@ -286,7 +307,7 @@ function Home() {
                          <div className="contentShop__products">
                               {
                                    productListaCopy.length != 0 ?
-                                        productListaCopy.slice(tabMin,tabMax).map((data, i) => {
+                                        productListaCopy.slice(tabMin, tabMax).map((data, i) => {
                                              return <Product {...data} key={data._id} hiddenF={false} />
                                         })
                                         :

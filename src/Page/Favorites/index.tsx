@@ -6,6 +6,7 @@ import { ProductInterfece } from '../../features/productSlice';
 import { useState,useEffect } from 'react';
 import Lottie from 'lottie-react';
 import AstronautAnim from '../../resouces/astronaut.json';
+import axios from 'axios';
  
 function Favorites() {
      let favorites = useSelector( (state:RootState) => state.favorites);
@@ -23,10 +24,7 @@ function Favorites() {
                }
           }));
      }
-   // tabs
-//    let [tabMin, setTabMin] = useState<number>(0);
-//    let [tabMax, setTabMax] = useState<number>(6);
-
+  
      return (
           <div className="favorites">
                <div className="title">
