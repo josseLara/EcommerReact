@@ -40,13 +40,9 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
                          email: response.data.email,
                          imageUrl: response.data.img,
                          change: true
-                    }))
-                   
-                    setTimeout(() => {
-                         window.location.href = "https://ecommer-react.vercel.app/home";
-                       }, 0);
+                    }))             
                   
-                    // return response.data;
+                    return response.data;
 
                })
                .catch(error => {
