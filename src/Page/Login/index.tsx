@@ -55,19 +55,9 @@ function Login() {
           }
      }
      
-     useEffect(() => {
-         
-            const token = localStorage.getItem('token');
-            if (token) {
-              try {
-                setShowLoading(true);
+     useEffect(() => { 
                 getTokenSave(dispatch, setProfile);
-               
-              } catch (err) {
-                setShowLoading(false);
-              }
-          }
-        }, [user]);
+        }, []);
 
      return (
           <div className="login">
