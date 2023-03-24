@@ -59,7 +59,6 @@ function Login() {
                try {
                     setShowLoading(true);
                     getTokenSave(dispatch, setProfile)
-                    handletNavigator()
                } catch (err) {
                     setShowLoading(false);
                }
