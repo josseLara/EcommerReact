@@ -15,7 +15,7 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
           axios.post(url, { email, pass })
                .then(response => {
                     localStorage.setItem('token', response.data.token)
-                    new Promise((resolve:any) => setTimeout(resolve, 1000))
+                    new Promise((resolve:any) => setTimeout(resolve, 500))
                     .then(() => {
                       if(handletNavigator) handletNavigator();
                     });
