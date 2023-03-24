@@ -69,7 +69,7 @@ function Login() {
             }
             setCheckedToken(true); // add this line
           }
-        }, []);
+        }, [user]);
 
      return (
           <div className="login">
