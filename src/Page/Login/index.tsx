@@ -55,23 +55,21 @@ function Login() {
           }
      }
      const [checkedToken, setCheckedToken] = useState(false);
-
      useEffect(() => {
-       if (!checkedToken) {
-         setCheckedToken(true);
-         const token = localStorage.getItem('token');
-         if (token) {
-           try {
-             setShowLoading(true);
-             getTokenSave(dispatch, setProfile);
-             handletNavigator();
-           } catch (err) {
-             setShowLoading(false);
-           }
-         }
-       }
-     }, [checkedToken]);
-   
+          if (!checkedToken) {
+            const token = localStorage.getItem('token');
+            if (token) {
+              try {
+                setShowLoading(true);
+                getTokenSave(dispatch, setProfile);
+                handletNavigator();
+              } catch (err) {
+                setShowLoading(false);
+              }
+            }
+            setCheckedToken(true); // add this line
+          }
+        }, [checkedToken]);
 
      return (
           <div className="login">
