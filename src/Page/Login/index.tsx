@@ -10,7 +10,7 @@ import { setProfile } from '../../features/user/userSlice';
 import { Link } from 'react-router-dom';
 import { getTokenSave } from '../../services/auth';
 import { FormEvent } from 'react';
-import { RootState } from '../../store';
+import { RootState, store } from '../../store';
 import Loading from '../../components/Loading';
 
 interface animation {
@@ -54,17 +54,24 @@ function Login() {
 
           }
      }
+     const [checkedToken, setCheckedToken] = useState(false);
+
      useEffect(() => {
-          if (!boolToken){
-               try {
-                    setShowLoading(true);
-                    getTokenSave(dispatch, setProfile)
-               } catch (err) {
-                    setShowLoading(false);
-               }
-          }
-          setBoolToken(true)
-     }, [boolToken])
+       if (!checkedToken) {
+         setCheckedToken(true);
+         const token = localStorage.getItem('token');
+         if (token) {
+           try {
+             setShowLoading(true);
+             getTokenSave(dispatch, setProfile);
+             handletNavigator();
+           } catch (err) {
+             setShowLoading(false);
+           }
+         }
+       }
+     }, [checkedToken, setShowLoading, getTokenSave, dispatch, setProfile, handletNavigator]);
+   
 
      return (
           <div className="login">
