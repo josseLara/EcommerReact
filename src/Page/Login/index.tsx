@@ -55,7 +55,7 @@ function Login() {
           }
      }
      useEffect(() => {
-          if (localStorage.getItem("token") && !boolToken){
+          if (!boolToken){
                try {
                     setShowLoading(true);
                     getTokenSave(dispatch, setProfile)
