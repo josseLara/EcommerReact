@@ -8,7 +8,52 @@
      gap: 20px;
      margin-top: 10%;
      margin-left: 0%;
+   
 }
+/* alert */
+.login__alertSucess{
+     position: absolute;
+     top: 2%;
+     right: 2%;
+     display: grid;
+     grid-template-columns: 1fr 2fr;
+     gap: 4px;
+     background-color: rgb(37, 152, 37);
+     padding: 0px 10px;
+     /* animation: alertSucess 2s alternate forwards ease-in-out; */
+}
+.login__alertSucess i{
+     grid-column: 3/3;
+     font-size: 1.6rem;
+     margin-top: 5px;
+     color: #fff;
+     cursor: pointer;
+}
+.login__alertSucess i:hover{
+     color: red;
+}
+.login__alertSucess .welcomeAnim{
+     width: 100px;
+     height: 100px;
+}
+.login__alertSucess h2{
+     text-align: center;
+     width: 300px;
+     font-size: 1rem;
+     color: #fff;
+     font-weight: 700;
+}
+
+@keyframes alertSucess {
+     to{
+          transform: translateX(0vw);
+     }
+     from{
+          transform: translateX(100vw);
+
+     }
+}
+/*  */
 .login__loadingBg{
      position: fixed;
      width: 100%;

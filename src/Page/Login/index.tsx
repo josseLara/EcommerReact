@@ -2,6 +2,7 @@ import './style.css'
 import Lottie from "lottie-react";
 import animEcoomer from '../../resouces/login.json';
 import animIncorrect from '../../resouces/incorrect.json';
+import animWelcome from '../../resouces/welcome.json';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
@@ -11,19 +12,28 @@ import { getTokenSave } from '../../services/auth';
 import { FormEvent } from 'react';
 import { RootState } from '../../store';
 
+interface animation {
+     animation: string
+}
 
 function Login() {
-
+     // animation alert sucess
+     let [alertSucess, setAlertSucess] = useState(false);
+     let animationAlert: animation = alertSucess ?
+          { animation: 'alertSucess 1s alternate forwards ease-in-out' } :
+          { animation: 'alertSucess 1s alternate-reverse forwards ease-in-out' };
+     const keyAlert = alertSucess ? "1" : "0";
+     // login 
      let [user, setUser] = useState({});
      const navigate = useNavigate();
      const dispatch = useDispatch();
      let user11 = useSelector((state: RootState) => state.user);
      let [incorrect, setIncorrect] = useState(false);
-     let handleIncorrect = ()=> setIncorrect(true);
+     let handleIncorrect = () => setIncorrect(true);
 
 
      let handletNavigator = () => {
-          window.location.href = "https://ecommer-react.vercel.app/home"    
+          window.location.href = "https://ecommer-react.vercel.app/home"
           // window.location.href = "http://localhost:3000/home"    
      };
 
@@ -33,16 +43,22 @@ function Login() {
           const form = e.currentTarget;
           const formData = new FormData(form);
           try {
-               getTokenSave(dispatch, setProfile, formData, handletNavigator,handleIncorrect)
+               getTokenSave(dispatch, setProfile, formData, handletNavigator, handleIncorrect)
           } catch (err) {
                setIncorrect(true)
           }
      }
      useEffect(() => getTokenSave(dispatch, setProfile), [])
+     useEffect(() =>{ if(user11.profileGoogle.change){setAlertSucess(true) }}, [user11])
 
      return (
           <div className="login">
-
+               {/* alerta de registrado correctamente */}
+               <div className="login__alertSucess" style={animationAlert} key={keyAlert}>
+                    <i className='bx bx-x'></i>
+                    <Lottie animationData={animWelcome} className="welcomeAnim" />
+                    <h2>Se registro correctamente {user11.profileGoogle.name} por favor ingrese su email y contraseña</h2>
+               </div>
                <div className="login__content">
                     {/* logo */}
                     <div className="logo">
