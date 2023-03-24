@@ -53,7 +53,10 @@ function Login() {
                
           }
      }
-     useEffect(() => getTokenSave(dispatch, setProfile), [])
+     if(localStorage.getItem("token")){
+          getTokenSave(dispatch, setProfile)
+     }
+     // useEffect(() => getTokenSave(dispatch, setProfile), [])
      useEffect(() =>{ if(user11.profileGoogle.change){setAlertSucess(true) }}, [user11])
 
      return (
