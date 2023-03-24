@@ -54,10 +54,14 @@ function Login() {
 
           }
      }
-     
-     useEffect(() => { 
-                getTokenSave(dispatch, setProfile);
-        }, []);
+
+     useEffect(() => {
+          (async () => {
+               let token = await getTokenSave(dispatch, setProfile);
+               console.log('el token es', token);
+          }
+          )()
+     }, []);
 
      return (
           <div className="login">
