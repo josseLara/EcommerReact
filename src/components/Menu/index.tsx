@@ -63,7 +63,7 @@ function Menu() {
      const handleOut = () => {
           localStorage.removeItem("token");
           dispatch(setProfile({name:"",email:"",imageUrl:"",change:false}))
-          navigator('/')
+          window.location.href= "https://ecommer-react.vercel.app"
      }
      return (
           <div className="menu">
