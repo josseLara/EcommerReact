@@ -57,7 +57,7 @@ function Login() {
 
      return (
           <div className="login">
-              { showLoading && <Loading/>}
+              { <Loading/>}
                <div className="login__content">
                     {/* logo */}
                     <div className="logo">
