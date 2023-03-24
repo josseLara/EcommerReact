@@ -138,6 +138,12 @@ form button:hover {
      background-color: #3650d0 !important;
      color: #fff;
 }
+.form__input__err{
+     color: rgb(212, 6, 6);
+     position: absolute;
+     font-size: .9rem;
+     top: 80%;
+}
 /* wave */
 .waveSing{
      position: absolute;

@@ -25,6 +25,7 @@ function SignUp() {
      const [file, setFile] = useState<any>("");
      const [base64String, setBase64String] = useState('');
      const styled = { borderColor: pass == pass1 && pass1 != "" && pass.length > 7 ? "green" : "red" };
+     const [emailError,setEmailError] = useState(false);
      let handletNavigator = () => {
           window.location.href = "https://ecommer-react.vercel.app/home"    
      };
@@ -53,6 +54,7 @@ function SignUp() {
           };
           try {
                let status = await axios.post(url, data);
+               console.log(status)
                getTokenSave(dispatch, setProfile, formData,handletNavigator)
                if(handletNavigator) handletNavigator();
           } catch (err) {
@@ -99,6 +101,7 @@ function SignUp() {
                               <input type="email" name="email" id="email" ref={emailRef} required={true} />
                               <i className='bx bxs-envelope'></i>
                          </div>
+                        {emailError && <p className='form__input__err'>Este email ya esta registrado</p>}
                     </div>
                     <div className="form__input">
                          <label htmlFor="pass">Contraseña</label>
