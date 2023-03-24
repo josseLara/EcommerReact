@@ -32,6 +32,7 @@ function Login() {
      let [incorrect, setIncorrect] = useState(false);
      let handleIncorrect = () => setIncorrect(true);
      let [showLoading, setShowLoading] = useState(false);
+     let [boolToken, setBoolToken] = useState(false);
 
      let handletNavigator = () => {
           window.location.href = "https://ecommer-react.vercel.app/home"
@@ -54,13 +55,15 @@ function Login() {
           }
      }
      useEffect(() => {
-          if (localStorage.getItem("token")){
+          if (localStorage.getItem("token") && !boolToken){
                try {
                     setShowLoading(true);
                     getTokenSave(dispatch, setProfile)
                     handletNavigator()
+                    setBoolToken(true)
                } catch (err) {
                     setShowLoading(false);
+                    setBoolToken(false)
                }
           }
      }, [])
