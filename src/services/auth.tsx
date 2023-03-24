@@ -1,7 +1,6 @@
 import axios from "axios";
 
 
-
 export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,handletNavigator ?:Function,handleIncorrect ?:Function) {
 
      let email =formData ? formData.get('email'): "";
@@ -44,7 +43,7 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
                     }))
                    
                     setTimeout(() => {
-                         location.href = "https://ecommer-react.vercel.app/home";
+                         window.location.href = "https://ecommer-react.vercel.app/home";
                        }, 0);
                   
                     // return response.data;

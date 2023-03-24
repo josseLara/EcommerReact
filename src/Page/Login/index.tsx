@@ -54,7 +54,7 @@ function Login() {
 
           }
      }
-     const [checkedToken, setCheckedToken] = useState(false);
+     
      useEffect(() => {
          
             const token = localStorage.getItem('token');
