@@ -58,7 +58,6 @@ function SignUp() {
 
      }
 
-     useEffect(()=> navigate('/home'),[user])
      // foto
      let handleChangeFoto = (e: React.ChangeEvent<HTMLInputElement>) => {
           if (e.target.files && e.target.files[0]) {
