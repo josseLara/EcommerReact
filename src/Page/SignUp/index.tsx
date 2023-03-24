@@ -56,9 +56,14 @@ function SignUp() {
                await axios.post(url, data);
                getTokenSave(dispatch, setProfile, formData, handletNavigator)
                if (handletNavigator) handletNavigator();
+               setEmailError(false) 
+
           } catch (err:any) {
                const errorMessage = err.response.data.error[0].msg;
                console.log(errorMessage);
+               if(errorMessage == "El usuario ya existe en la DB"){
+                    setEmailError(true) 
+               }
           }
 
      }
