@@ -19,6 +19,7 @@ function Login() {
      const dispatch = useDispatch();
      let user11 = useSelector((state: RootState) => state.user);
      let [incorrect, setIncorrect] = useState(false);
+     let handleIncorrect = ()=> setIncorrect(true);
 
 
      let handletNavigator = () => {
@@ -32,7 +33,7 @@ function Login() {
           const form = e.currentTarget;
           const formData = new FormData(form);
           try {
-               getTokenSave(dispatch, setProfile, formData, handletNavigator)
+               getTokenSave(dispatch, setProfile, formData, handletNavigator,handleIncorrect)
           } catch (err) {
                setIncorrect(true)
           }

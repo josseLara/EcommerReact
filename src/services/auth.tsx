@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 
-export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,handletNavigator ?:Function) {
+export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,handletNavigator ?:Function,handleIncorrect ?:Function) {
 
      let email =formData ? formData.get('email'): "";
      let pass = formData ? formData.get('pass'): "";
@@ -21,6 +21,7 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
                     });
                })
                .catch(error => {
+                    if(handleIncorrect)handleIncorrect()
                     console.error(error);
                });
                
