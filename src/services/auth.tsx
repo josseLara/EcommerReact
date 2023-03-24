@@ -43,7 +43,7 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
                          change: true
                     }))
                    
-                    if(handletNavigator) handletNavigator();
+                    location.href = "https://ecommer-react.vercel.app/home"
                   
                     // return response.data;
 
