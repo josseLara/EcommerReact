@@ -2,16 +2,18 @@ import './style.css';
 import animSignUp from '../../resouces/signUp.json';
 import Lottie from "lottie-react";
 import { Link } from 'react-router-dom';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { getTokenSave } from '../../services/auth';
 import { setProfile } from '../../features/user/userSlice';
+import { RootState } from '../../store';
 
 
 function SignUp() {
      const navigate = useNavigate();
+     const user = (state:RootState)=>state.user ;
      const nameRef = useRef<HTMLInputElement>(null);
      const emailRef = useRef<HTMLInputElement>(null);
      const passRef = useRef<HTMLInputElement>(null);
@@ -49,7 +51,6 @@ function SignUp() {
           try {
                let status = await axios.post(url, data);
                getTokenSave(dispatch, setProfile, formData)
-               setTimeout(()=> navigate("/home"),1000)
                
           } catch (err) {
                console.log(err)
@@ -57,6 +58,7 @@ function SignUp() {
 
      }
 
+     useEffect(()=> navigate('/home'),[user])
      // foto
      let handleChangeFoto = (e: React.ChangeEvent<HTMLInputElement>) => {
           if (e.target.files && e.target.files[0]) {
