@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setTimeout } from "timers/promises";
 
 
 export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,handletNavigator ?:Function) {
@@ -13,9 +14,11 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
           try{
           axios.post(url, { email, pass })
                .then(response => {
-                    if(handletNavigator) handletNavigator();
                     localStorage.setItem('token', response.data.token)
-                    
+                    new Promise((resolve:any) => setTimeout(resolve, 1000))
+                    .then(() => {
+                      if(handletNavigator) handletNavigator();
+                    });
                })
                .catch(error => {
                     console.error(error);
