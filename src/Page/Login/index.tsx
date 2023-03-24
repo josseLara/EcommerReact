@@ -59,7 +59,7 @@ function Login() {
           (async () => {
                let token:any = await getTokenSave(dispatch, setProfile);
                if(token){
-                    handletNavigator()
+                   navigate('/home')
                }
           }
           )()
