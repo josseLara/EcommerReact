@@ -55,8 +55,8 @@ function SignUp() {
           try {
                await axios.post(url, data);
                getTokenSave(dispatch, setProfile, formData, handletNavigator)
-               if (handletNavigator) handletNavigator();
                setEmailError(false) 
+               if (handletNavigator) handletNavigator();
 
           } catch (err:any) {
                const errorMessage = err.response.data.error[0].msg;
