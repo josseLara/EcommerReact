@@ -41,14 +41,15 @@ function Login() {
      // submit login
      let handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          // setShowLoading(true);
+          setShowLoading(true);
           const form = e.currentTarget;
           const formData = new FormData(form);
           try {
                getTokenSave(dispatch, setProfile, formData, handletNavigator, handleIncorrect)
-               
+               setShowLoading(false)
           } catch (err) {
                setIncorrect(true)
+               setShowLoading(false)
                
           }
      }
