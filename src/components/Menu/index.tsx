@@ -8,6 +8,7 @@ import { ProductInterfece } from '../../features/productSlice';
 import { setDescriptionState } from '../../features/description/descriptionSlice';
 import Lottie from 'lottie-react';
 import cartEmptyAnim from '../../resouces/empty-cart.json'
+import { setProfile } from '../../features/user/userSlice';
 
 interface animation {
      animation: string
@@ -61,7 +62,8 @@ function Menu() {
      }
      const handleOut = () => {
           localStorage.removeItem("token");
-         window.location.href="https://ecommer-react.vercel.app";
+          dispatch(setProfile({name:"",email:"",imageUrl:"",change:false}))
+          navigator('/')
      }
      return (
           <div className="menu">
