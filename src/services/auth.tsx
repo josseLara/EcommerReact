@@ -42,10 +42,9 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
                          imageUrl: response.data.img,
                          change: true
                     }))
-                    new Promise((resolve:any) => setTimeout(resolve, 500))
-                    .then(() => {
-                      if(handletNavigator) handletNavigator();
-                    });
+                   
+                    if(handletNavigator) handletNavigator();
+                  
                     // return response.data;
 
                })
