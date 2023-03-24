@@ -41,7 +41,7 @@ function Login() {
      // submit login
      let handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          setShowLoading(true);
+          // setShowLoading(true);
           const form = e.currentTarget;
           const formData = new FormData(form);
           try {
