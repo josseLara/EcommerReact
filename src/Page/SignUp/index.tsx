@@ -54,7 +54,7 @@ function SignUp() {
           };
           try {
                await axios.post(url, data);
-               getTokenSave(dispatch, setProfile, formData, handletNavigator)
+               await getTokenSave(dispatch, setProfile, formData, handletNavigator)
                setEmailError(false) 
                if (handletNavigator) handletNavigator();
 
