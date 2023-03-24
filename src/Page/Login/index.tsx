@@ -46,10 +46,10 @@ function Login() {
           const formData = new FormData(form);
           try {
                getTokenSave(dispatch, setProfile, formData, handletNavigator, handleIncorrect)
-               setShowLoading(false)
+               
           } catch (err) {
                setIncorrect(true)
-               setShowLoading(false)
+               
           }
      }
      useEffect(() => getTokenSave(dispatch, setProfile), [])
