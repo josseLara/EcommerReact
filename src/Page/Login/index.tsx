@@ -54,8 +54,12 @@ function Login() {
           }
      }
      useEffect(() =>{ 
-          setShowLoading(true);
-          getTokenSave(dispatch, setProfile)
+          try{
+               setShowLoading(true);
+               getTokenSave(dispatch, setProfile)
+          }catch(err){
+               setShowLoading(false);
+          }
      }, [])
 
      return (
