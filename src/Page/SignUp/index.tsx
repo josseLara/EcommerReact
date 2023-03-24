@@ -53,10 +53,11 @@ function SignUp() {
                foto
           };
           try {
-               await axios.post(url, data);
-               await getTokenSave(dispatch, setProfile, formData, handletNavigator)
-               setEmailError(false) 
-               if (handletNavigator) handletNavigator();
+               await axios.post(url, data).then(data =>{
+                    getTokenSave(dispatch, setProfile, formData, handletNavigator)
+                   setEmailError(false) 
+                   if (handletNavigator) handletNavigator();
+               })
 
           } catch (err:any) {
                const errorMessage = err.response.data.error[0].msg;
