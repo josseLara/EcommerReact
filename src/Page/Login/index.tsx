@@ -39,9 +39,6 @@ function Login() {
      }
      useEffect(() => getTokenSave(dispatch, setProfile), [])
 
-  
-     // useEffect(() => navigate("/home"), [user11])
-
      return (
           <div className="login">
 
