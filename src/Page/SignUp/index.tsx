@@ -25,6 +25,9 @@ function SignUp() {
      const [file, setFile] = useState<any>("");
      const [base64String, setBase64String] = useState('');
      const styled = { borderColor: pass == pass1 && pass1 != "" && pass.length > 7 ? "green" : "red" };
+     let handletNavigator = () => {
+          window.location.href = "https://ecommer-react.vercel.app/home"    
+     };
      const handletSubmit = async function (e: React.FormEvent<HTMLFormElement>) {
           e.preventDefault();
 
@@ -50,7 +53,7 @@ function SignUp() {
           };
           try {
                let status = await axios.post(url, data);
-               getTokenSave(dispatch, setProfile, formData)
+               getTokenSave(dispatch, setProfile, formData,handletNavigator)
                
           } catch (err) {
                console.log(err)
