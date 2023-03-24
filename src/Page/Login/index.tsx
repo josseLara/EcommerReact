@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { getTokenSave } from '../../services/auth';
 import { FormEvent } from 'react';
 import { RootState } from '../../store';
+import Loading from '../../components/Loading';
 
 interface animation {
      animation: string
@@ -30,7 +31,7 @@ function Login() {
      let user11 = useSelector((state: RootState) => state.user);
      let [incorrect, setIncorrect] = useState(false);
      let handleIncorrect = () => setIncorrect(true);
-
+     let [showLoading,setShowLoading] = useState(false);
 
      let handletNavigator = () => {
           window.location.href = "https://ecommer-react.vercel.app/home"
@@ -40,12 +41,15 @@ function Login() {
      // submit login
      let handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
           e.preventDefault();
+          setShowLoading(true);
           const form = e.currentTarget;
           const formData = new FormData(form);
           try {
                getTokenSave(dispatch, setProfile, formData, handletNavigator, handleIncorrect)
+               setShowLoading(false)
           } catch (err) {
                setIncorrect(true)
+               setShowLoading(false)
           }
      }
      useEffect(() => getTokenSave(dispatch, setProfile), [])
@@ -53,12 +57,7 @@ function Login() {
 
      return (
           <div className="login">
-               {/* alerta de registrado correctamente */}
-               <div className="login__alertSucess" style={animationAlert} key={keyAlert}>
-                    <i className='bx bx-x'></i>
-                    <Lottie animationData={animWelcome} className="welcomeAnim" />
-                    <h2>Se registro correctamente {user11.profileGoogle.name} por favor ingrese su email y contraseña</h2>
-               </div>
+              { showLoading && <Loading/>}
                <div className="login__content">
                     {/* logo */}
                     <div className="logo">
