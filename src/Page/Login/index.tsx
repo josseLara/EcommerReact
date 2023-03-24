@@ -56,14 +56,13 @@ function Login() {
      }
      useEffect(() => {
           if (localStorage.getItem("token") && !boolToken){
+               setBoolToken(true)
                try {
                     setShowLoading(true);
                     getTokenSave(dispatch, setProfile)
                     handletNavigator()
-                    setBoolToken(true)
                } catch (err) {
                     setShowLoading(false);
-                    setBoolToken(false)
                }
           }
      }, [])
