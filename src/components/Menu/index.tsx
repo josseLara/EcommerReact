@@ -53,11 +53,15 @@ function Menu() {
           setSearchResult(result)
           console.log(result)
      }
-     const handleShowescription = (e:ProductInterfece)=>{
+     const handleShowescription = (e: ProductInterfece) => {
           dispatch(setDescriptionState([e]));
           setSearchResult([]);
           setSearchText("")
           navigator('/description')
+     }
+     const handleOut = () => {
+          localStorage.removeItem("token");
+          navigator('/')
      }
      return (
           <div className="menu">
@@ -68,21 +72,21 @@ function Menu() {
 
                          <div className="search__Results">
                               {
-                                   serchText.length !=0 &&(
+                                   serchText.length != 0 && (
                                         searchResult.length != 0 ?
-                                        searchResult.map((e, i): any => {
-                                             return (
-                                                  <div className="search__ResultsItem" style={{background:"rgba(0, 0, 0, 0.371)"}}  key={i} onClick={()=>handleShowescription(e)}>
-                                                       <img src={e.img[0]} alt="imagen" />
-                                                       <div className="search__Results__desc">
-                                                            <p>{e.name}</p>
-                                                            <span>Nike</span>
-                                                       </div>
-                                                  </div>);
-                                        }) :
-                                        <div className="search__sinResult" style={{background:"rgba(0, 0, 0, 0.371)"}}>
-                                             <span>Sin resultados</span>
-                                        </div>)
+                                             searchResult.map((e, i): any => {
+                                                  return (
+                                                       <div className="search__ResultsItem" style={{ background: "rgba(0, 0, 0, 0.371)" }} key={i} onClick={() => handleShowescription(e)}>
+                                                            <img src={e.img[0]} alt="imagen" />
+                                                            <div className="search__Results__desc">
+                                                                 <p>{e.name}</p>
+                                                                 <span>Nike</span>
+                                                            </div>
+                                                       </div>);
+                                             }) :
+                                             <div className="search__sinResult" style={{ background: "rgba(0, 0, 0, 0.371)" }}>
+                                                  <span>Sin resultados</span>
+                                             </div>)
                               }
 
                          </div>
@@ -102,7 +106,7 @@ function Menu() {
                          <div>
                               <Link to="/favorites" onClick={() => setToggleMenu(!toggleMenu)}>
                                    Favoritos
-                              </Link> 
+                              </Link>
                          </div>
                          <div>
                               <Link to="/profile" onClick={() => setToggleMenu(!toggleMenu)}>
@@ -127,6 +131,9 @@ function Menu() {
                          <span>{dataCart.length}</span>
                          <i className='bx bx-cart' onClick={() => { setCartMenu(!cartMenu) }}></i>
                     </div>
+                    <div className="menu__left__out" onClick={handleOut}>
+                         <i className='bx bx-log-out-circle'></i>
+                    </div>
                </div>
 
                {/* cart */}
@@ -137,12 +144,12 @@ function Menu() {
                     <div className="list">
                          {
                               dataCart.length != 0 ?
-                              dataCart.map((e, i) => <CardProduct {...e} key={i} />)
-                              :
-                              <div className="list__empty">
-                                   <Lottie animationData={cartEmptyAnim} className="cartEmptyAnim" />
-                                   <h3>No hay Productos</h3>
-                              </div>
+                                   dataCart.map((e, i) => <CardProduct {...e} key={i} />)
+                                   :
+                                   <div className="list__empty">
+                                        <Lottie animationData={cartEmptyAnim} className="cartEmptyAnim" />
+                                        <h3>No hay Productos</h3>
+                                   </div>
                          }
                     </div>
                     <div className="card__checkout">
@@ -151,7 +158,7 @@ function Menu() {
                               <span>${total}</span>
                          </div>
 
-                         <Link to="/cart" onClick={()=>setCartMenu(!cartMenu)}>
+                         <Link to="/cart" onClick={() => setCartMenu(!cartMenu)}>
                               <button>
                                    Verificar
                               </button>
