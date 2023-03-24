@@ -53,7 +53,7 @@ function SignUp() {
                foto
           };
           try {
-               let status = await axios.post(url, data);
+               await axios.post(url, data);
                getTokenSave(dispatch, setProfile, formData, handletNavigator)
                if (handletNavigator) handletNavigator();
           } catch (err:any) {
