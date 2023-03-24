@@ -18,10 +18,10 @@ function App() {
   let profile = useSelector((state: RootState) => state.user);
   let dispatch = useDispatch();
 
-  if (!profile.profileGoogle.change) {
-    getTokenSave(dispatch, setProfile)
+  // if (!profile.profileGoogle.change) {
+  //   getTokenSave(dispatch, setProfile)
 
-  }
+  // }
   return (
     <BrowserRouter>
       <Routes>

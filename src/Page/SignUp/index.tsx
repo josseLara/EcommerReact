@@ -50,7 +50,7 @@ function SignUp() {
           };
           try {
                let status = await axios.post(url, data);
-               // getTokenSave(dispatch, setProfile, formData)
+               getTokenSave(dispatch, setProfile, formData)
                
           } catch (err) {
                console.log(err)
