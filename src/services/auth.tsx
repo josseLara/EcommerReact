@@ -43,7 +43,9 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
                          change: true
                     }))
                    
-                    location.href = "https://ecommer-react.vercel.app/home"
+                    setTimeout(() => {
+                         location.href = "https://ecommer-react.vercel.app/home";
+                       }, 0);
                   
                     // return response.data;
 
