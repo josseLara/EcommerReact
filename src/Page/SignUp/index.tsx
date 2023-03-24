@@ -49,7 +49,7 @@ function SignUp() {
           try {
                let status = await axios.post(url, data);
                getTokenSave(dispatch, setProfile, formData)
-               navigate("/home")
+               window.location.href= "https://ecommer-react.vercel.app/home"
           } catch (err) {
                console.log(err)
           }
