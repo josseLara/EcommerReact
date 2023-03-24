@@ -35,13 +35,18 @@ export function getTokenSave(dispatch: any, setProfile: any,formData?: FormData,
           axios.post(urlVerf, { email, pass, token })
                .then(response => {
                     console.log('tiene token pueede pasar', response.data)
+                    
                     dispatch(setProfile({
                          name: response.data.name,
                          email: response.data.email,
                          imageUrl: response.data.img,
                          change: true
                     }))
-                    return response.data;
+                    new Promise((resolve:any) => setTimeout(resolve, 500))
+                    .then(() => {
+                      if(handletNavigator) handletNavigator();
+                    });
+                    // return response.data;
 
                })
                .catch(error => {
