@@ -70,7 +70,7 @@ function Login() {
            }
          }
        }
-     }, [checkedToken, setShowLoading, getTokenSave, dispatch, setProfile, handletNavigator]);
+     }, [checkedToken]);
    
 
      return (
