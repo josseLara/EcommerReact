@@ -31,11 +31,11 @@ function Login() {
      let user11 = useSelector((state: RootState) => state.user);
      let [incorrect, setIncorrect] = useState(false);
      let handleIncorrect = () => setIncorrect(true);
-     let [showLoading,setShowLoading] = useState(false);
+     let [showLoading, setShowLoading] = useState(false);
 
      let handletNavigator = () => {
           window.location.href = "https://ecommer-react.vercel.app/home"
-          
+
      };
 
      // submit login
@@ -50,21 +50,23 @@ function Login() {
           } catch (err) {
                setIncorrect(true)
                setShowLoading(false)
-               
+
           }
      }
-     useEffect(() =>{ 
-          try{
-               setShowLoading(true);
-               getTokenSave(dispatch, setProfile)
-          }catch(err){
-               setShowLoading(false);
+     useEffect(() => {
+          if (localStorage.getItem("token")){
+               try {
+                    setShowLoading(true);
+                    getTokenSave(dispatch, setProfile)
+               } catch (err) {
+                    setShowLoading(false);
+               }
           }
      }, [])
 
      return (
           <div className="login">
-              { showLoading && <Loading/>}
+               {showLoading && <Loading />}
                <div className="login__content">
                     {/* logo */}
                     <div className="logo">
