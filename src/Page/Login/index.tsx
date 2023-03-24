@@ -57,8 +57,10 @@ function Login() {
 
      useEffect(() => {
           (async () => {
-               let token = await getTokenSave(dispatch, setProfile);
-               console.log('el token es', token);
+               let token:any = await getTokenSave(dispatch, setProfile);
+               if(token.email){
+                    handletNavigator()
+               }
           }
           )()
      }, []);
