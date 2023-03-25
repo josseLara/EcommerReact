@@ -11,7 +11,6 @@
 - La aplicación se conecta con mongodb, una base de datos no relacional que almacena los datos en documentos JSON, lo que permite una mayor flexibilidad y escalabilidad.
 
 - La aplicación cuenta con las siguientes secciones principales:
-
 -- Compra: donde los usuarios pueden ver los productos disponibles, filtrarlos por categoría, marca, precio u otros criterios, y añadirlos al carro o a los favoritos.
 
 -- Carro: donde los usuarios pueden ver los productos que han añadido al carro, modificar las cantidades o eliminarlos, y proceder al pago mediante un método seguro.
