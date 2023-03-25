@@ -57,10 +57,11 @@ function Login() {
 
      useEffect(() => {
           (async () => {
-               let token:any = await getTokenSave(dispatch, setProfile);
-            
-               navigate('/home')
+               let token: any = await getTokenSave(dispatch, setProfile);
+              setShowLoading(true)
+               setTimeout(()=> navigate('/home'),1000)
               
+
           }
           )()
      }, [user11]);
