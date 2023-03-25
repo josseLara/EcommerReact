@@ -58,9 +58,9 @@ function Login() {
      useEffect(() => {
           (async () => {
                let token: any = await getTokenSave(dispatch, setProfile);
-              setShowLoading(true)
-               setTimeout(()=> navigate('/home'),1000)
-              
+               setShowLoading(true)
+               setTimeout(() => navigate('/home'), 1000)
+               setShowLoading(false)
 
           }
           )()
