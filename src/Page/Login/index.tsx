@@ -58,12 +58,12 @@ function Login() {
      useEffect(() => {
           (async () => {
                let token:any = await getTokenSave(dispatch, setProfile);
-               if(token){
-                   navigate('/home')
-               }
+            
+               navigate('/home')
+              
           }
           )()
-     }, []);
+     }, [user11]);
 
      return (
           <div className="login">
@@ -72,7 +72,7 @@ function Login() {
                     {/* logo */}
                     <div className="logo">
                          <img src="https://seeklogo.com/images/E/e-commerce-concept-logo-5146F23CC5-seeklogo.com.png" alt="llogo" />
-                         <span>E-commerce {user11.profileGoogle.email}</span>
+                         <span>E-commerce</span>
                     </div>
                     {/* waves */}
                     <div style={{ height: "100%", overflow: "hidden" }} className="wave"><svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: "100%", width: "100%" }}><path d="M208.09,0.00 C152.69,67.20 262.02,76.08 200.80,150.22 L-0.00,150.22 L-0.00,0.00 Z" style={{ stroke: "none", fill: "#08f" }}></path></svg></div>
