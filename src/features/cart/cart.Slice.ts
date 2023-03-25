@@ -12,7 +12,8 @@ export interface ProductInterfece {
      amount: string,
      logo: string,
      type: string,
-     gender: string
+     gender: string,
+     marca:string
 }
 
 

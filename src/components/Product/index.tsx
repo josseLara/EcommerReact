@@ -94,7 +94,7 @@ function Product(data: ProductInterfece & { hiddenF: boolean }) {
                {data.hiddenF && <Lottie animationData={IconRemoveAnim} className="iconRemove" lottieRef={removeAnimRef} onMouseEnter={() => playAnimation(removeAnimRef)} onMouseLeave={() => pauseAnimation(removeAnimRef)} onClick={hendletRemoveFavorite} />}
                <div className="product__head">
                     <span>{data.type}</span>
-                    <p>{data.name}</p>
+                    <p>{data.marca}</p>
                </div>
                <img src={data.img[0]} alt="product" />
                <div className="product__footer">
