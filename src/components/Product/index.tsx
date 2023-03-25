@@ -93,13 +93,13 @@ function Product(data: ProductInterfece & { hiddenF: boolean }) {
           <div className="product" onMouseMove={() => setProductAnim(true)} onMouseOut={() => setProductAnim(false)}>
                {data.hiddenF && <Lottie animationData={IconRemoveAnim} className="iconRemove" lottieRef={removeAnimRef} onMouseEnter={() => playAnimation(removeAnimRef)} onMouseLeave={() => pauseAnimation(removeAnimRef)} onClick={hendletRemoveFavorite} />}
                <div className="product__head">
-                    <span>Nike</span>
-                    <p>Toon Ford</p>
+                    <span>{data.type}</span>
+                    <p>{data.name}</p>
                </div>
                <img src={data.img[0]} alt="product" />
                <div className="product__footer">
                     <div className="product__footer__price">
-                         <p>Nike</p>
+                         <p>{data.gender}</p>
                          <span>${data.price}</span>
                          <Link to="/description" className="product__footer__more" onClick={handletAddDescription}>
                               <span>Ver mas</span>
