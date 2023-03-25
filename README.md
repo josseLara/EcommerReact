@@ -11,17 +11,17 @@
 - La aplicación se conecta con mongodb, una base de datos no relacional que almacena los datos en documentos JSON, lo que permite una mayor flexibilidad y escalabilidad.
 
 - La aplicación cuenta con las siguientes secciones principales:
--- Compra: donde los usuarios pueden ver los productos disponibles, filtrarlos por categoría, marca, precio u otros criterios, y añadirlos al carro o a los favoritos.
+- Compra: donde los usuarios pueden ver los productos disponibles, filtrarlos por categoría, marca, precio u otros criterios, y añadirlos al carro o a los favoritos.
 
--- Carro: donde los usuarios pueden ver los productos que han añadido al carro, modificar las cantidades o eliminarlos, y proceder al pago mediante un método seguro.
+-Carro: donde los usuarios pueden ver los productos que han añadido al carro, modificar las cantidades o eliminarlos, y proceder al pago mediante un método seguro.
 
--- Favoritos: donde los usuarios pueden ver los productos que han marcado como favoritos, y acceder a ellos rápidamente o añadirlos al carro.
+-Favoritos: donde los usuarios pueden ver los productos que han marcado como favoritos, y acceder a ellos rápidamente o añadirlos al carro.
 
---Perfil: donde los usuarios pueden ver y editar su información personal, sus direcciones de envío, sus métodos de pago, su historial de compras y sus devoluciones.
+-Perfil: donde los usuarios pueden ver y editar su información personal, sus direcciones de envío, sus métodos de pago, su historial de compras y sus devoluciones.
 
---Login: donde los usuarios pueden iniciar sesión con su correo electrónico y contraseña, o con alguna red social como Facebook o Google.
+-Login: donde los usuarios pueden iniciar sesión con su correo electrónico y contraseña, o con alguna red social como Facebook o Google.
 
---Sign up: donde los usuarios pueden registrarse en la aplicación proporcionando su correo electrónico, contraseña y otros datos opcionales.
+-Sign up: donde los usuarios pueden registrarse en la aplicación proporcionando su correo electrónico, contraseña y otros datos opcionales.
 
 # Login
 ![image](https://user-images.githubusercontent.com/99273526/227743687-e8c84a1a-0821-4558-8292-ba21c08dc43f.png)
